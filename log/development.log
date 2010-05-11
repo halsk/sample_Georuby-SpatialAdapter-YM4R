@@ -1,0 +1,60 @@
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (41.4ms)[0m   [0;1mSELECT * FROM "areas" WHERE ("areas"."gid" = 1) [0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (39.5ms)[0m   [0;1mSELECT * FROM "areas" WHERE ("areas"."gid" = 1) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: argument of WHERE must be type boolean, not type point
+: SELECT * FROM "areas" WHERE (Point(35.647401,139.716911)) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: syntax error at or near "contain"
+LINE 1: SELECT * FROM "areas" WHERE (the_geom contain Point(35.64740...
+ ^
+: SELECT * FROM "areas" WHERE (the_geom contain Point(35.647401,139.716911)) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: parse error - invalid geometry
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'POINT(139.716911,35.647401)')) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: Operation on two geometries with different SRIDs
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'POINT(139.716911 35.647401)')) [0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: parse error - invalid geometry
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'POINT(139.716911 35.647401), 4326')) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: Operation on two geometries with different SRIDs
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'POINT(139.716911 35.647401)')) [0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: syntax error at or near "POINT"
+LINE 1: ..." WHERE (ST_Contains(wgs_geom, 'GeometryFromText('POINT(139....
+ ^
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'GeometryFromText('POINT(139.716911 35.647401)', 4326)')) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: Operation on two geometries with different SRIDs
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(139.716911 35.647401)')) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: parse error - invalid geometry
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'ST_SetSRID(ST_Point(139.716911 35.647401), 4326)')) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (28.7ms)[0m   [0;1mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;35;1mArea Load (1.0ms)[0m   [0mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (14.5ms)[0m   [0;1mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: parse error - invalid geometry
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'ST_SetSRID(ST_Point(139.716911 35.647401), 4326)')) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: Operation on two geometries with different SRIDs
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(139.716911 35.647401)')) [0m
+  [4;35;1mArea Load (1.3ms)[0m   [0mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (15.6ms)[0m   [0;1mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (14.2ms)[0m   [0;1mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;35;1mArea Load (0.8ms)[0m   [0mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: Operation on two geometries with different SRIDs
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(139.716911 35.647401)')) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (14.3ms)[0m   [0;1mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: Operation on two geometries with different SRIDs
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(139.716911 35.647401)')) [0m
