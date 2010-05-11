@@ -58,3 +58,38 @@ LINE 1: ..." WHERE (ST_Contains(wgs_geom, 'GeometryFromText('POINT(139....
   [4;36;1mArea Load (14.3ms)[0m   [0;1mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(39.716911 35.647401)')) [0m
   [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: Operation on two geometries with different SRIDs
 : SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, 'Point(139.716911 35.647401)')) [0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: syntax error at or near "35.647401"
+LINE 1: ..._Contains(wgs_geom, ST_SetSRID( Point(139.716911 35.647401)...
+ ^
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( Point(139.716911 35.647401),4326 ))) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: invalid input syntax for type point: "139.716911 35.647401"
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( Point('139.716911 35.647401'),4326 ))) [0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: function st_point(unknown) does not exist
+LINE 1: ..."areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_Point('...
+ ^
+HINT: No function matches the given name and argument types. You might need to add explicit type casts.
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_Point('139.716911 35.647401'),4326 ))) [0m
+  [4;35;1mArea Load (73.3ms)[0m   [0mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_Point(139.716911, 35.647401),4326 ))) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: syntax error at or near "139.716911"
+LINE 1: ...eom, ST_SetSRID( ST_SetSRID( ST_Point( 35.647401 139.716911...
+ ^
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_SetSRID( ST_Point( 35.647401 139.716911 )),4326 ))) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: syntax error at or near "139.716911"
+LINE 1: ...eom, ST_SetSRID( ST_SetSRID( ST_Point( 35.647401 139.716911...
+ ^
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_SetSRID( ST_Point( 35.647401 139.716911 ),4326 ))) [0m
+  [4;36;1mArea Load (0.0ms)[0m   [0;1mPGError: ERROR: syntax error at end of input
+LINE 1: ...RID( ST_SetSRID( ST_Point( 35.647401, 139.716911 ),4326 ))) 
+ ^
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_SetSRID( ST_Point( 35.647401, 139.716911 ),4326 ))) [0m
+  [4;35;1mArea Load (0.0ms)[0m   [0mPGError: ERROR: function st_setsrid(geometry) does not exist
+LINE 1: ..."areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_SetSRID...
+ ^
+HINT: No function matches the given name and argument types. You might need to add explicit type casts.
+: SELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_SetSRID( ST_Point( 35.647401, 139.716911 )),4326 ))) [0m
+  [4;36;1mArea Load (11.7ms)[0m   [0;1mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_Point( 35.647401, 139.716911 ),4326 ))) [0m
+  [4;35;1mArea Load (8.7ms)[0m   [0mSELECT * FROM "areas" WHERE (ST_Contains(wgs_geom, ST_SetSRID( ST_Point( 139.716911, 35.647401 ),4326 ))) [0m
