@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
 unless @message
 
   page << @map.clear_overlays
-  page << @map.add_overlay(@polygon)
-
+  @polygons.each do |poly|
+    page << @map.add_overlay(poly)
+  end
   page << @map.set_center(@center,@zoom)
-  notice = "#{@name} をゲット！"
+  #notice = "#{@name} をゲット！"
 else
   notice = @message
 end

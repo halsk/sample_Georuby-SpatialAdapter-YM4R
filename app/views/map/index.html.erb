@@ -35,11 +35,19 @@ GEvent.addListener(map, 'load', watch());
 	
 <body style="margin:0;padding:0;">
   <div id="main">
-
+<% form_remote_tag(:url => {:action => :find}) do |f|%>
+  <div id="form" >
+	<label for="zip">市区町村コード:</label>
+	<%= text_field_tag "code" %>
+	<%= submit_tag "Find" %> 複数ある場合カンマ区切り（例：13101,13102,13103）
+      </div>
+<% end %>
     <div id="notice" style="display:none;"></div>
-    <%= @map.div(:width => 320, :height => 340) %>
-
+    <%= @map.div(:width => 800, :height => 600) %>
+    
   </div>
+  <hr/>
+  <a href="http://www.dictator.co.jp/i/i_jis/i_jis_00.html" target="_blank">市区町村コード一覧</a>
   </body>
 
 </html>

@@ -4,13 +4,12 @@ unless @message
   page << @map.add_overlay(@polygon)
 
   page << @map.set_center(@center,@zoom)
-  notice = georss_ge(@id)
-
+  notice = "#{@name} をゲット！"
 else
   notice = @message
 end
 	
-page.hide ‘notice‘
+page.hide 'notice'
 
-page.replace_html ‘notice‘, notice
-page.visual_effect :appear, ‘notice‘, :duration => 0.5
+page.replace_html 'notice', notice
+page.visual_effect :appear, 'notice', :duration => 0.5
