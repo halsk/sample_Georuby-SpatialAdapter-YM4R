@@ -35,10 +35,11 @@ def find
       @id = area.gid
       @name = area.名称
       
-      poly = area.wgs_geom[0]
-      envelope = envelope.nil? ? poly.envelope : envelope.extend(poly.envelope) 
+      area.wgs_geom.each do |poly|
+        envelope = envelope.nil? ? poly.envelope : envelope.extend(poly.envelope) 
       
-      @polygons << GPolygon.from_georuby(poly,"#ff0000",2,0.8,"#ff0000",0.4)
+        @polygons << GPolygon.from_georuby(poly,"#ff0000",2,0.8,"#ff0000",0.4)
+      end
     end
     @center = GLatLng.from_georuby(envelope.center)
     @zoom = @map.get_bounds_zoom_level(GLatLngBounds.from_georuby(envelope))
