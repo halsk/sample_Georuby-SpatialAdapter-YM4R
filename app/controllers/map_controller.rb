@@ -14,14 +14,20 @@ def find
     
     areas = Area.find(:all, :contain => "ST_Point(#{lon}, #{lat})")
   elsif (params[:code])
-    areas = Area.find(:all, :conditions => ["行政コード in (?)", params[:code].split(",").map{|d| d.to_i}])
+    if (params[:code].length == 2) # 2桁の場合県
+      areas = Area.find(:all, :select => "ST_UNION(wgs_geom) as wgs_geom , 'dummy' as gid, 'dummy' as 名称 " , 
+                        :conditions => ["行政コード > ? and 行政コード < ?", params[:code].to_i * 1000 ,
+                                        ( params[:code].to_i + 1 ) * 1000])
+    else
+      areas = Area.find(:all, :conditions => ["行政コード in (?)", params[:code].split(",").map{|d| d.to_i}])
+    end
   else
     areas = nil
   end
+
   if areas.nil?
     @message = "Area not found"
   else
-
     @polygons = []
     @map = Variable.new("map")
     envelope = nil
